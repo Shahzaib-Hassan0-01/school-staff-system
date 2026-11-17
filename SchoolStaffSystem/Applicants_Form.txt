@@ -1,0 +1,47 @@
+First name,Last name,Gender,Email,Salary,Department,Position,Manager Type,School
+Kate,Summer,Female,kate.summer@riversidecs.ie,65000.00,Computer Science,senior,Head of Department,Riverside Community School
+Ken,Winter,Male,ken.winter@riversidecs.ie,45000.00,Computer Science,middle,Teacher,Riverside Community School
+James,Anderson,Male,james.anderson@riversidecs.ie,98000.00,Administration,senior,Principal,Riverside Community School
+Sarah,Johnson,Female,sarah.johnson@riversidecs.ie,82000.00,Administration,senior,Deputy Principal,Riverside Community School
+John,Smith,Male,john.smith@riversidecs.ie,64000.00,Finance,senior,Head of Department,Riverside Community School
+Emily,Brown,Female,emily.brown@riversidecs.ie,45000.00,English,middle,Teacher,Riverside Community School
+Michael,Williams,Male,michael.williams@riversidecs.ie,26000.00,Student Services,intern,Support Staff,Riverside Community School
+Sophia,Taylor,Female,sophia.taylor@riversidecs.ie,30000.00,Student Services,junior,Support Staff,Riverside Community School
+David,Wilson,Male,david.wilson@riversidecs.ie,66000.00,Mathematics,senior,Head of Department,Riverside Community School
+Olivia,Martinez,Female,olivia.martinez@riversidecs.ie,31000.00,Finance,contract,Support Staff,Riverside Community School
+Ethan,Anderson,Male,ethan.anderson@riversidecs.ie,57000.00,Mathematics,senior,Year Head,Riverside Community School
+Mia,Clark,Female,mia.clark@riversidecs.ie,34000.00,Administration,middle,Support Staff,Riverside Community School
+John,Anderson,Male,john.anderson@riversidecs.ie,80500.00,Administration,senior,Deputy Principal,Riverside Community School
+Sam,Johnson,Female,sam.johnson@riversidecs.ie,64500.00,Student Services,senior,Head of Department,Riverside Community School
+John,Brown,Male,john.brown@riversidecs.ie,65500.00,Science,senior,Head of Department,Riverside Community School
+Emma,Brown,Female,emma.brown@riversidecs.ie,39000.00,English,junior,Teacher,Riverside Community School
+Max,Williams,Male,max.williams@riversidecs.ie,26000.00,Computer Science,intern,Support Staff,Riverside Community School
+Sonya,Taylor,Female,sonya.taylor@riversidecs.ie,30000.00,Student Services,junior,Support Staff,Riverside Community School
+Denis,Wilson,Male,denis.wilson@riversidecs.ie,58000.00,Science,senior,Year Head,Riverside Community School
+Olga,Martinez,Female,olga.martinez@riversidecs.ie,31000.00,Finance,contract,Support Staff,Riverside Community School
+Ed,Anderson,Male,ed.anderson@riversidecs.ie,45000.00,Mathematics,middle,Teacher,Riverside Community School
+Milla,Clark,Female,milla.clark@riversidecs.ie,34000.00,Administration,middle,Support Staff,Riverside Community School
+Sophia,Lopez,Female,sophia.lopez@riversidecs.ie,39000.00,English,junior,Teacher,Riverside Community School
+Benjamin,Hill,Male,benjamin.hill@riversidecs.ie,65000.00,English,senior,Head of Department,Riverside Community School
+Jessica,Lee,Female,jessica.lee@riversidecs.ie,57500.00,Computer Science,senior,Year Head,Riverside Community School
+Daniel,Walker,Male,daniel.walker@riversidecs.ie,30000.00,Science,intern,Teacher,Riverside Community School
+Eleanor,Harris,Female,eleanor.harris@riversidecs.ie,37000.00,English,contract,Teacher,Riverside Community School
+Chris,Evans,Male,chris.evans@riversidecs.ie,26000.00,Student Services,intern,Support Staff,Riverside Community School
+Alex,Turner,Male,alex.turner@riversidecs.ie,45000.00,Computer Science,middle,Teacher,Riverside Community School
+Nina,Holmes,Female,nina.holmes@riversidecs.ie,31000.00,Finance,contract,Support Staff,Riverside Community School
+Victor,Stewart,Male,victor.stewart@riversidecs.ie,50000.00,Computer Science,senior,Teacher,Riverside Community School
+Lucy,Bennett,Female,lucy.bennett@riversidecs.ie,30000.00,Student Services,junior,Support Staff,Riverside Community School
+Oscar,Reed,Male,oscar.reed@riversidecs.ie,31000.00,Finance,contract,Support Staff,Riverside Community School
+Lana,Parker,Female,lana.parker@riversidecs.ie,50000.00,Science,senior,Teacher,Riverside Community School
+Harry,Cooper,Male,harry.cooper@riversidecs.ie,39000.00,Mathematics,junior,Teacher,Riverside Community School
+Isla,Fisher,Female,isla.fisher@riversidecs.ie,34000.00,Administration,middle,Support Staff,Riverside Community School
+Leo,Wright,Male,leo.wright@riversidecs.ie,50000.00,Science,senior,Teacher,Riverside Community School
+Eva,Mitchell,Female,eva.mitchell@riversidecs.ie,30000.00,Student Services,junior,Support Staff,Riverside Community School
+Ryan,Carter,Male,ryan.carter@riversidecs.ie,45000.00,Mathematics,middle,Teacher,Riverside Community School
+Holly,Brooks,Female,holly.brooks@riversidecs.ie,39000.00,Computer Science,junior,Teacher,Riverside Community School
+Daniel,Gray,Male,daniel.gray@riversidecs.ie,56000.00,English,senior,Year Head,Riverside Community School
+Layla,Jones,Female,layla.jones@riversidecs.ie,39000.00,Mathematics,junior,Teacher,Riverside Community School
+Sebastian,Morgan,Male,sebastian.morgan@riversidecs.ie,31000.00,Student Services,contract,Support Staff,Riverside Community School
+Elena,Scott,Female,elena.scott@riversidecs.ie,50000.00,Science,senior,Teacher,Riverside Community School
+Finn,Walker,Male,finn.walker@riversidecs.ie,26000.00,Administration,intern,Support Staff,Riverside Community School
+Amelia,King,Female,amelia.king@riversidecs.ie,45000.00,English,middle,Teacher,Riverside Community School

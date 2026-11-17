@@ -1,12 +1,11 @@
 package com.mycompany.schoolstaffsystem.model;
 
 /**
- * All valid Departments in the school.
- * Using an enum means a new employee can only be placed in a
- * department that already exists (data integrity).
+ * Departments that exist in the school.
+ *
+ * @author shahz
  */
 public enum Department {
-
     ADMINISTRATION("Administration"),
     MATHEMATICS("Mathematics"),
     SCIENCE("Science"),
@@ -25,30 +24,24 @@ public enum Department {
         return label;
     }
 
-    /**
-     * Finds a Department from text, e.g. "science" or "3".
-     * Returns null if the text does not match any existing Department.
-     */
+    // same idea as ManagerType - number or name, null if not valid
     public static Department fromInput(String input) {
         if (input == null) {
             return null;
         }
         String text = input.trim();
 
-        // Option 1: the user typed the number shown in the list
         try {
-            int number = Integer.parseInt(text);
-            Department[] all = Department.values();
-            if (number >= 1 && number <= all.length) {
-                return all[number - 1];
+            int num = Integer.parseInt(text);
+            if (num >= 1 && num <= values().length) {
+                return values()[num - 1];
             }
             return null;
         } catch (NumberFormatException e) {
-            // not a number, so try matching the name below
+            // not a number
         }
 
-        // Option 2: the user typed the name (not case sensitive)
-        for (Department dept : Department.values()) {
+        for (Department dept : values()) {
             if (dept.label.equalsIgnoreCase(text)) {
                 return dept;
             }

@@ -1,14 +1,11 @@
 package com.mycompany.schoolstaffsystem.model;
 
 /**
- * All valid Manager Types (roles) in the school.
- * Using an enum means only these values can ever exist, so a user
- * cannot type an invalid role (data integrity).
+ * Roles in the school. Rank is used for the hierarchy tree (1 = top).
  *
- * The rank is used to build the hierarchy tree: rank 1 is the top of the school.
+ * @author shahz
  */
 public enum ManagerType {
-
     PRINCIPAL("Principal", 1),
     DEPUTY_PRINCIPAL("Deputy Principal", 2),
     HEAD_OF_DEPARTMENT("Head of Department", 3),
@@ -32,30 +29,25 @@ public enum ManagerType {
         return rank;
     }
 
-    /**
-     * Finds a ManagerType from text, e.g. "head of department" or "3".
-     * Returns null if the text does not match any valid Manager Type.
-     */
+    // accepts the number from the list (e.g. "3") or the name (e.g. "year head")
+    // returns null if nothing matches
     public static ManagerType fromInput(String input) {
         if (input == null) {
             return null;
         }
         String text = input.trim();
 
-        // Option 1: the user typed the number shown in the list (1, 2, 3...)
         try {
-            int number = Integer.parseInt(text);
-            ManagerType[] all = ManagerType.values();
-            if (number >= 1 && number <= all.length) {
-                return all[number - 1];
+            int num = Integer.parseInt(text);
+            if (num >= 1 && num <= values().length) {
+                return values()[num - 1];
             }
             return null;
         } catch (NumberFormatException e) {
-            // not a number, so try matching the name below
+            // not a number, check the names instead
         }
 
-        // Option 2: the user typed the name (not case sensitive)
-        for (ManagerType type : ManagerType.values()) {
+        for (ManagerType type : values()) {
             if (type.label.equalsIgnoreCase(text)) {
                 return type;
             }

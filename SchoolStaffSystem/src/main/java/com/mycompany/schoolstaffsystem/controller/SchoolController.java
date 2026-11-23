@@ -1,8 +1,12 @@
 package com.mycompany.schoolstaffsystem.controller;
 
+
+import com.mycompany.schoolstaffsystem.model.Employee;
 import com.mycompany.schoolstaffsystem.model.StaffRegister;
 import com.mycompany.schoolstaffsystem.view.ConsoleView;
 import java.io.IOException;
+import java.util.List; 
+
 
 /**
  * Controller - gets the user's choice from the view, asks the model to do
@@ -40,6 +44,8 @@ public class SchoolController {
                      sortStaff();
                     break;
                 case SEARCH:
+                    searchStaff();     
+                    break;
                 case ADD_RECORDS:
                 case BINARY_TREE:
                     view.showMessage("(not built yet - coming in the next commits)");
@@ -73,5 +79,32 @@ public class SchoolController {
         model.sortByName();
         view.showTitle("Staff sorted A-Z - first " + NAMES_TO_SHOW + " of " + model.getEmployeeCount());
         view.showEmployeeTable(model.getFirst(NAMES_TO_SHOW));
+    }
+     
+        
+    private void searchStaff() {
+        // binary search needs a sorted list
+        if (!model.isSorted()) {
+            model.sortByName();
+            view.showMessage("(list wasn't sorted yet so it was sorted first)");
+        }
+
+        String name = view.ask("Enter the full name to search (e.g. Kate Summer): ");
+        if (name.trim().isEmpty()) {
+            view.showError("Name can't be empty.");
+            return;
+        }
+
+        List<Employee> matches = model.searchByName(name);
+        if (matches.isEmpty()) {
+            view.showMessage("No staff member called '" + name.trim() + "' was found.");
+            view.showMessage("Tip: enter first AND last name, e.g. Kate Summer");
+            return;
+        }
+
+        view.showTitle("Search result");
+        for (Employee e : matches) {
+            view.showEmployeeDetails(e);
+        }
     }
 }

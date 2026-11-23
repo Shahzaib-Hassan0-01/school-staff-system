@@ -53,4 +53,17 @@ public class ConsoleView {
             n++;
         }
     }
+    
+    public void showEmployeeDetails(Employee e) {
+        System.out.println("  Name         : " + e.getFullName());
+        System.out.println("  Manager Type : " + e.getManagerType());
+        System.out.println("  Department   : " + e.getDepartment());
+        if (!e.getEmail().isEmpty()) {
+            System.out.println("  Email        : " + e.getEmail());
+        }
+        if (!e.getPosition().isEmpty()) {
+            System.out.println("  Level        : " + e.getPosition());
+        }
+        System.out.println();
+    }
 }

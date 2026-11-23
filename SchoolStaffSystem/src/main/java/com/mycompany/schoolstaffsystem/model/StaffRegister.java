@@ -1,5 +1,7 @@
 package com.mycompany.schoolstaffsystem.model;
 
+
+import com.mycompany.schoolstaffsystem.algorithms.BinarySearch;  
 import com.mycompany.schoolstaffsystem.algorithms.MergeSort;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,5 +46,29 @@ public class StaffRegister {
     
     public int getEmployeeCount() {
         return employees.size();
+    }
+    
+    public List<Employee> searchByName(String name) {
+        List<Employee> matches = new ArrayList<>();
+        String cleanName = name.trim().replaceAll("\\s+", " "); // remove extra spaces
+
+        int index = BinarySearch.search(employees, cleanName, 0, employees.size() - 1);
+        if (index == -1) {
+            return matches;
+        }
+
+        // if two people have the same name they'll be next to each other, so check both sides
+        int start = index;
+        while (start > 0 && employees.get(start - 1).getFullName().equalsIgnoreCase(cleanName)) {
+            start--;
+        }
+        int end = index;
+        while (end < employees.size() - 1 && employees.get(end + 1).getFullName().equalsIgnoreCase(cleanName)) {
+            end++;
+        }
+        for (int i = start; i <= end; i++) {
+            matches.add(employees.get(i));
+        }
+        return matches;
     }
 }

@@ -2,6 +2,8 @@ package com.mycompany.schoolstaffsystem.view;
 
 import com.mycompany.schoolstaffsystem.controller.MenuOption;
 import java.util.Scanner;
+import com.mycompany.schoolstaffsystem.model.Employee;
+import java.util.List;
 
 /**
  * View - all printing and reading from the keyboard happens here.
@@ -9,7 +11,8 @@ import java.util.Scanner;
  * @author shahz
  */
 public class ConsoleView {
-
+    
+    private static final String ROW = "%-4s %-22s %-20s %-18s%n";
     private Scanner scanner = new Scanner(System.in);
 
     public String ask(String prompt) {
@@ -38,6 +41,16 @@ public class ConsoleView {
         System.out.println("Do You wish to SORT or SEARCH:");
         for (MenuOption option : MenuOption.values()) {
             System.out.println(option.getNumber() + ". " + option.getLabel());
+        }
+    }
+    
+    public void showEmployeeTable(List<Employee> list) {
+        System.out.printf(ROW, "No.", "Name", "Manager Type", "Department");
+        System.out.println("-----------------------------------------------------------------");
+        int n = 1;
+        for (Employee e : list) {
+            System.out.printf(ROW, n + ".", e.getFullName(), e.getManagerType(), e.getDepartment());
+            n++;
         }
     }
 }

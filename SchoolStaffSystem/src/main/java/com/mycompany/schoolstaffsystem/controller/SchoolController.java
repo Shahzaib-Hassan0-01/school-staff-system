@@ -12,6 +12,7 @@ import java.io.IOException;
  */
 public class SchoolController {
 
+    private static final int NAMES_TO_SHOW = 20;
     private StaffRegister model;
     private ConsoleView view;
 
@@ -36,6 +37,8 @@ public class SchoolController {
 
             switch (option) {
                 case SORT:
+                     sortStaff();
+                    break;
                 case SEARCH:
                 case ADD_RECORDS:
                 case BINARY_TREE:
@@ -64,5 +67,11 @@ public class SchoolController {
                 view.showError("Could not read '" + fileName + "', check the name and try again.");
             }
         }
+    }
+    
+     private void sortStaff() {
+        model.sortByName();
+        view.showTitle("Staff sorted A-Z - first " + NAMES_TO_SHOW + " of " + model.getEmployeeCount());
+        view.showEmployeeTable(model.getFirst(NAMES_TO_SHOW));
     }
 }

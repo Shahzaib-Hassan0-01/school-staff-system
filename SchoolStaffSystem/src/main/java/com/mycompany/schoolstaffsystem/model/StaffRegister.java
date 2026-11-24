@@ -16,6 +16,7 @@ import java.util.List;
 public class StaffRegister {
 
     private List<Employee> employees = new ArrayList<>();
+    private List<Employee> newlyAdded = new ArrayList<>();
     private EmployeeFileReader fileReader = new EmployeeFileReader();
     private boolean sorted = false;
     
@@ -70,5 +71,31 @@ public class StaffRegister {
             matches.add(employees.get(i));
         }
         return matches;
+    }
+    
+    public boolean isValidName(String name) {
+        if (name == null) {
+            return false;
+        }
+        String text = name.trim();
+        return text.length() >= 2 && text.length() <= 30 && text.matches("[A-Za-z][A-Za-z '\\-]*");
+    }
+
+    public Employee addEmployee(String firstName, String lastName, ManagerType type, Department dept) {
+        Employee emp = new Employee(capitalise(firstName), capitalise(lastName), type, dept);
+        employees.add(emp);
+        newlyAdded.add(emp);
+        sortByName(); // keep the list sorted so search still works
+        return emp;
+    }
+
+    public List<Employee> getNewlyAdded() {
+        return new ArrayList<>(newlyAdded);
+    }
+
+    // "kate" -> "Kate" (rest left as typed so O'Brien stays O'Brien)
+    private String capitalise(String text) {
+        String t = text.trim();
+        return t.substring(0, 1).toUpperCase() + t.substring(1);
     }
 }

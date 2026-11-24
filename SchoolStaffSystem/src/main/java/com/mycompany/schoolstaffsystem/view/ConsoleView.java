@@ -2,7 +2,9 @@ package com.mycompany.schoolstaffsystem.view;
 
 import com.mycompany.schoolstaffsystem.controller.MenuOption;
 import java.util.Scanner;
+import com.mycompany.schoolstaffsystem.model.Department;
 import com.mycompany.schoolstaffsystem.model.Employee;
+import com.mycompany.schoolstaffsystem.model.ManagerType;
 import java.util.List;
 
 /**
@@ -65,5 +67,19 @@ public class ConsoleView {
             System.out.println("  Level        : " + e.getPosition());
         }
         System.out.println();
+    }
+    
+        public void showManagerTypes() {
+        System.out.println("Valid Manager Types:");
+        for (ManagerType type : ManagerType.values()) {
+            System.out.println("  " + (type.ordinal() + 1) + ". " + type.getLabel());
+        }
+    }
+
+    public void showDepartments() {
+        System.out.println("Existing Departments:");
+        for (Department dept : Department.values()) {
+            System.out.println("  " + (dept.ordinal() + 1) + ". " + dept.getLabel());
+        }
     }
 }

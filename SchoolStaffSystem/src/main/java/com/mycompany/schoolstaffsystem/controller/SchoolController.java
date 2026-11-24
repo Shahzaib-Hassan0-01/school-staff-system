@@ -2,6 +2,8 @@ package com.mycompany.schoolstaffsystem.controller;
 
 
 import com.mycompany.schoolstaffsystem.model.Employee;
+import com.mycompany.schoolstaffsystem.model.Department;
+import com.mycompany.schoolstaffsystem.model.ManagerType;
 import com.mycompany.schoolstaffsystem.model.StaffRegister;
 import com.mycompany.schoolstaffsystem.view.ConsoleView;
 import java.io.IOException;
@@ -47,6 +49,8 @@ public class SchoolController {
                     searchStaff();     
                     break;
                 case ADD_RECORDS:
+                    addRecords();
+                    break;
                 case BINARY_TREE:
                     view.showMessage("(not built yet - coming in the next commits)");
                     break;
@@ -105,6 +109,61 @@ public class SchoolController {
         view.showTitle("Search result");
         for (Employee e : matches) {
             view.showEmployeeDetails(e);
+        }
+    }
+    
+        private void addRecords() {
+        boolean again = true;
+        while (again) {
+            String firstName = askName("Enter first name: ");
+            String lastName = askName("Enter last name: ");
+            ManagerType type = askManagerType();
+            Department dept = askDepartment();
+
+            Employee added = model.addEmployee(firstName, lastName, type, dept);
+            view.showMessage("Record added: " + added);
+
+            again = view.ask("Add another record? (Y/N): ").trim().equalsIgnoreCase("Y");
+        }
+
+        List<Employee> newOnes = model.getNewlyAdded();
+        view.showTitle("Newly added records (" + newOnes.size() + ")");
+        view.showEmployeeTable(newOnes);
+        view.showMessage("Total staff now: " + model.getEmployeeCount());
+    }
+
+    // keeps asking until the name is valid
+    private String askName(String prompt) {
+        while (true) {
+            String name = view.ask(prompt);
+            if (model.isValidName(name)) {
+                return name.trim();
+            }
+            view.showError("Name must be 2-30 letters (spaces, - and ' allowed).");
+        }
+    }
+
+    // keeps asking until the manager type exists
+    private ManagerType askManagerType() {
+        view.showManagerTypes();
+        while (true) {
+            ManagerType type = ManagerType.fromInput(view.ask("Choose Manager Type (number or name): "));
+            if (type != null) {
+                return type;
+            }
+            view.showError("That Manager Type doesn't exist, pick one from the list.");
+        }
+    }
+
+    // keeps asking until the department exists
+    private Department askDepartment() {
+        view.showDepartments();
+        while (true) {
+            Department dept = Department.fromInput(view.ask("Choose Department (number or name): "));
+            if (dept != null) {
+                return dept;
+            }
+            view.showError("That Department doesn't exist, pick one from the list.");
         }
     }
 }

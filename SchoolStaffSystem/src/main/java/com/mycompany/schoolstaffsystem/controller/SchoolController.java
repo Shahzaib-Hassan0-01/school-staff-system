@@ -120,16 +120,24 @@ public class SchoolController {
             ManagerType type = askManagerType();
             Department dept = askDepartment();
 
-            Employee added = model.addEmployee(firstName, lastName, type, dept);
-            view.showMessage("Record added: " + added);
+            if (model.isDuplicate(firstName, lastName, type, dept)) {
+                view.showError("This person is already in the list with the same role and department.");
+            } else {
+                Employee added = model.addEmployee(firstName, lastName, type, dept);
+                view.showMessage("Record added: " + added);
+            }
 
             again = view.ask("Add another record? (Y/N): ").trim().equalsIgnoreCase("Y");
         }
 
         List<Employee> newOnes = model.getNewlyAdded();
-        view.showTitle("Newly added records (" + newOnes.size() + ")");
-        view.showEmployeeTable(newOnes);
-        view.showMessage("Total staff now: " + model.getEmployeeCount());
+       if (newOnes.isEmpty()) {
+            view.showMessage("No new records were added.");
+        } else {
+            view.showTitle("Newly added records (" + newOnes.size() + ")");
+            view.showEmployeeTable(newOnes);
+            view.showMessage("Total staff now: " + model.getEmployeeCount());
+        }
     }
 
     // keeps asking until the name is valid
@@ -148,10 +156,13 @@ public class SchoolController {
         view.showManagerTypes();
         while (true) {
             ManagerType type = ManagerType.fromInput(view.ask("Choose Manager Type (number or name): "));
-            if (type != null) {
+            if (type == null) {
+                view.showError("That Manager Type doesn't exist, pick one from the list.");
+            } else if (type == ManagerType.PRINCIPAL && model.hasPrincipal()) {
+                view.showError("The school already has a Principal, pick another type.");
+            } else {
                 return type;
             }
-            view.showError("That Manager Type doesn't exist, pick one from the list.");
         }
     }
 

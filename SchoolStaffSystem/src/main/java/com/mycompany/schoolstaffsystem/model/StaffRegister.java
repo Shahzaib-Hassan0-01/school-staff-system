@@ -80,6 +80,28 @@ public class StaffRegister {
         String text = name.trim();
         return text.length() >= 2 && text.length() <= 30 && text.matches("[A-Za-z][A-Za-z '\\-]*");
     }
+    
+        // a school only has one Principal
+    public boolean hasPrincipal() {
+        for (Employee e : employees) {
+            if (e.getManagerType() == ManagerType.PRINCIPAL) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // same name + same role + same department = duplicate
+    public boolean isDuplicate(String firstName, String lastName, ManagerType type, Department dept) {
+        String fullName = firstName.trim() + " " + lastName.trim();
+        for (Employee e : employees) {
+            if (e.getFullName().equalsIgnoreCase(fullName) && e.getManagerType() == type
+                    && e.getDepartment() == dept) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Employee addEmployee(String firstName, String lastName, ManagerType type, Department dept) {
         Employee emp = new Employee(capitalise(firstName), capitalise(lastName), type, dept);

@@ -6,6 +6,7 @@ import com.mycompany.schoolstaffsystem.model.Department;
 import com.mycompany.schoolstaffsystem.model.ManagerType;
 import com.mycompany.schoolstaffsystem.model.StaffRegister;
 import com.mycompany.schoolstaffsystem.view.ConsoleView;
+import com.mycompany.schoolstaffsystem.model.EmployeeTree;
 import java.io.IOException;
 import java.util.List; 
 
@@ -52,7 +53,7 @@ public class SchoolController {
                     addRecords();
                     break;
                 case BINARY_TREE:
-                    view.showMessage("(not built yet - coming in the next commits)");
+                    showHierarchy();
                     break;
                 case EXIT:
                     view.showMessage("Goodbye!");
@@ -176,5 +177,17 @@ public class SchoolController {
             }
             view.showError("That Department doesn't exist, pick one from the list.");
         }
+    }
+    
+        private void showHierarchy() {
+        if (model.getEmployeeCount() < StaffRegister.MIN_TREE_RECORDS) {
+            view.showError("Need at least " + StaffRegister.MIN_TREE_RECORDS + " records to build the tree, you have "
+                    + model.getEmployeeCount());
+            return;
+        }
+
+        EmployeeTree tree = model.buildHierarchyTree();
+        view.showTitle("School hierarchy (level order)");
+        view.showTree(tree.levelOrder(), tree.getHeight(), tree.getNodeCount());
     }
 }

@@ -3,6 +3,7 @@ package com.mycompany.schoolstaffsystem.view;
 import com.mycompany.schoolstaffsystem.controller.MenuOption;
 import java.util.Scanner;
 import com.mycompany.schoolstaffsystem.model.Department;
+import com.mycompany.schoolstaffsystem.model.TreeNode;
 import com.mycompany.schoolstaffsystem.model.Employee;
 import com.mycompany.schoolstaffsystem.model.ManagerType;
 import java.util.List;
@@ -81,5 +82,28 @@ public class ConsoleView {
         for (Department dept : Department.values()) {
             System.out.println("  " + (dept.ordinal() + 1) + ". " + dept.getLabel());
         }
+    }
+    
+    public void showTree(List<List<TreeNode>> levels, int height, int nodeCount) {
+        for (int i = 0; i < levels.size(); i++) {
+            List<TreeNode> level = levels.get(i);
+            System.out.println("Level " + i + " (" + level.size() + " node(s)):");
+            for (TreeNode node : level) {
+                System.out.println("  " + node.getEmployee() + children(node));
+            }
+        }
+        System.out.println();
+        System.out.println("Tree height (number of levels): " + height);
+        System.out.println("Total node count: " + nodeCount);
+    }
+
+    // shows who is under this person, e.g. "-> L: Kate Summer | R: Ken Winter"
+    private String children(TreeNode node) {
+        if (node.getLeft() == null && node.getRight() == null) {
+            return "";
+        }
+        String left = (node.getLeft() == null) ? "-" : node.getLeft().getEmployee().getFullName();
+        String right = (node.getRight() == null) ? "-" : node.getRight().getEmployee().getFullName();
+        return "  ->  L: " + left + " | R: " + right;
     }
 }

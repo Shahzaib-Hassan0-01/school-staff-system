@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class StaffRegister {
 
+    public static final int MIN_TREE_RECORDS = 20;
     private List<Employee> employees = new ArrayList<>();
     private List<Employee> newlyAdded = new ArrayList<>();
     private EmployeeFileReader fileReader = new EmployeeFileReader();
@@ -119,5 +120,16 @@ public class StaffRegister {
     private String capitalise(String text) {
         String t = text.trim();
         return t.substring(0, 1).toUpperCase() + t.substring(1);
+    }
+    
+    public EmployeeTree buildHierarchyTree() {
+        List<Employee> byName = MergeSort.sort(employees, Employee.BY_NAME);
+        List<Employee> byRank = MergeSort.sort(byName, Employee.BY_RANK);
+
+        EmployeeTree tree = new EmployeeTree();
+        for (Employee e : byRank) {
+            tree.insert(e);
+        }
+        return tree;
     }
 }
